@@ -12,3 +12,5 @@ month_to_int = {
     "Nov": 11,
     "Dec": 12,
 }
+
+int_to_month = {v: k for k, v in month_to_int.items()}

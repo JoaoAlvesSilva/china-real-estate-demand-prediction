@@ -1,8 +1,18 @@
 import numpy as np
+from typing import Callable, Optional
 from auxiliary.static_data import *
 
 
-def func_aux_str_to_int(name):
+def func_aux_str_to_int(name: str) -> int:
+    """
+    Convert a string to integer by replacing spaces with zeros.
+    
+    Args:
+        name: String to convert
+        
+    Returns:
+        Integer representation of the string with spaces as zeros
+    """
     new_str = ""
     for char in name:
         if char == " ":
@@ -12,19 +22,57 @@ def func_aux_str_to_int(name):
     return int(new_str)
 
 
-def func_str_to_yr(id):
+def func_str_to_yr(id: str) -> int:
+    """
+    Extract year from a string ID.
+    
+    Args:
+        id: String ID containing year information
+        
+    Returns:
+        Year as integer (first 4 characters)
+    """
     return int(id[:4])
 
 
-def func_str_to_sector(id):
+def func_str_to_sector(id: str) -> int:
+    """
+    Extract sector from a string ID.
+    
+    Args:
+        id: String ID containing sector information
+        
+    Returns:
+        Sector as integer (last 2 characters converted)
+    """
     return int(func_aux_str_to_int(id[-2:]))
 
 
-def func_str_to_month(id):
+def func_str_to_month(id: str) -> int:
+    """
+    Extract month from a string ID.
+    
+    Args:
+        id: String ID containing month information
+        
+    Returns:
+        Month as integer using month_to_int mapping
+    """
     return int(month_to_int[id[5:8]])
 
 
-def score(y_pred: np.ndarray, y_true: np.ndarray, eps=10 ** (-12)) -> float:
+def score(y_pred: np.ndarray, y_true: np.ndarray, eps: float = 10 ** (-12)) -> float:
+    """
+    Calculate a custom scoring metric based on prediction accuracy.
+    
+    Args:
+        y_pred: Predicted values
+        y_true: True values
+        eps: Small epsilon value to avoid division by zero
+        
+    Returns:
+        Score between 0 and 1, where 1 is perfect prediction
+    """
     ratio = np.abs((y_true - y_pred) / np.maximum(np.abs(y_true), eps))
 
     ratio_small = []
@@ -43,7 +91,7 @@ def score(y_pred: np.ndarray, y_true: np.ndarray, eps=10 ** (-12)) -> float:
         return 1 - scaled_mape
 
 
-def random_half_score(y1, y2, score_func=score, random_seed=None, n_repeats=1152):
+def random_half_score(y1: np.ndarray, y2: np.ndarray, score_func: Callable[[np.ndarray, np.ndarray], float] = score, random_seed: Optional[int] = None, n_repeats: int = 1152) -> float:
     """
     Randomly partition two arrays in half and apply scoring function.
     Repeat n_repeats times and return the average score.
