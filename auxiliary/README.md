@@ -1,0 +1,1 @@
+the purpose of new_house_transactions_per_sector.py is to create a .csv file with the same name that displays the amount spent on new house transactions per sector, with each period as an index. this makes it more suitable for exploration of the correlation among the different sectors, and over time.

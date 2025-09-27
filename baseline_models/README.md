@@ -1,0 +1,3 @@
+average_over_previous_year.py is a model that returns, for each sector, the amount of new transactions as the average over the previous year.
+
+test_previous_year_models.ipynb is a notebook where it is explored the idea of setting the amount of new house transactions for given period to be precisely equal to that of the previous year. the result of this is baseline_submission_previous_year_submission.csv

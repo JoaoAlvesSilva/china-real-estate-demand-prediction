@@ -1,0 +1,1 @@
+plots_new_house_transactions.py provides a plot of the amount in new house transactions per sector over time. it's a very important script, since this provides the most important modelling ideas.
