@@ -1,7 +1,7 @@
 This is a python project to enter the following KAGGLE competition:
 https://www.kaggle.com/competitions/china-real-estate-demand-prediction
 
-To run on a local machine, simply change the paths of the .env file appropriately.
+To run on a local machine, simply change the paths of the .env file using the path where you put the repository in.
 Currently, this is configured to run in vscode.
 
 The contents of this respository are as follows:
