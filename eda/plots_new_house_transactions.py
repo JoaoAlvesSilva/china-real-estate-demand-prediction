@@ -43,13 +43,13 @@ for sector in range(1, 97):
     plt.title("New House Transaction Amount Over Time for " + sector_to_plot)
     plt.grid(True)
     plt.tight_layout()
-    
+
     # Save plot to plots folder
     plot_filename = f"sector_{sector}_new_house_transactions.png"
     plot_path = os.path.join(plots_dir, plot_filename)
-    plt.savefig(plot_path, dpi=300, bbox_inches='tight')
+    plt.savefig(plot_path, dpi=300, bbox_inches="tight")
     plt.close()  # Close the figure to free memory
-    
+
     print(f"Saved plot for {sector_to_plot} to {plot_filename}")
 
 print(f"All 96 plots have been saved to {plots_dir}")

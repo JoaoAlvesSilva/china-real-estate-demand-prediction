@@ -6,10 +6,10 @@ from auxiliary.static_data import *
 def func_aux_str_to_int(name: str) -> int:
     """
     Convert a string to integer by replacing spaces with zeros.
-    
+
     Args:
         name: String to convert
-        
+
     Returns:
         Integer representation of the string with spaces as zeros
     """
@@ -25,10 +25,10 @@ def func_aux_str_to_int(name: str) -> int:
 def func_str_to_yr(id: str) -> int:
     """
     Extract year from a string ID.
-    
+
     Args:
         id: String ID containing year information
-        
+
     Returns:
         Year as integer (first 4 characters)
     """
@@ -38,10 +38,10 @@ def func_str_to_yr(id: str) -> int:
 def func_str_to_sector(id: str) -> int:
     """
     Extract sector from a string ID.
-    
+
     Args:
         id: String ID containing sector information
-        
+
     Returns:
         Sector as integer (last 2 characters converted)
     """
@@ -51,10 +51,10 @@ def func_str_to_sector(id: str) -> int:
 def func_str_to_month(id: str) -> int:
     """
     Extract month from a string ID.
-    
+
     Args:
         id: String ID containing month information
-        
+
     Returns:
         Month as integer using month_to_int mapping
     """
@@ -64,12 +64,12 @@ def func_str_to_month(id: str) -> int:
 def score(y_pred: np.ndarray, y_true: np.ndarray, eps: float = 10 ** (-12)) -> float:
     """
     Calculate a custom scoring metric based on prediction accuracy.
-    
+
     Args:
         y_pred: Predicted values
         y_true: True values
         eps: Small epsilon value to avoid division by zero
-        
+
     Returns:
         Score between 0 and 1, where 1 is perfect prediction
     """
@@ -91,7 +91,13 @@ def score(y_pred: np.ndarray, y_true: np.ndarray, eps: float = 10 ** (-12)) -> f
         return 1 - scaled_mape
 
 
-def random_half_score(y1: np.ndarray, y2: np.ndarray, score_func: Callable[[np.ndarray, np.ndarray], float] = score, random_seed: Optional[int] = None, n_repeats: int = 1152) -> float:
+def random_half_score(
+    y1: np.ndarray,
+    y2: np.ndarray,
+    score_func: Callable[[np.ndarray, np.ndarray], float] = score,
+    random_seed: Optional[int] = None,
+    n_repeats: int = 1152,
+) -> float:
     """
     Randomly partition two arrays in half and apply scoring function.
     Repeat n_repeats times and return the average score.
